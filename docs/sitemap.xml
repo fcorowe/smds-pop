@@ -1,11 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://de-bias.github.io/debias/hms-book/index.html</loc>
-    <lastmod>2025-10-18T22:03:47.900Z</lastmod>
+    <loc>https://fcorowe.github.io/smds-pop/index.html</loc>
+    <lastmod>2025-10-18T22:56:46.233Z</lastmod>
   </url>
   <url>
-    <loc>https://fcorowe.github.io/smds-pop/index.html</loc>
-    <lastmod>2025-10-18T22:03:47.900Z</lastmod>
+    <loc>https://fcorowe.github.io/smds-pop/01a_overview.html</loc>
+    <lastmod>2025-10-18T22:49:36.953Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcorowe.github.io/smds-pop/01b_environment.html</loc>
+    <lastmod>2025-10-18T22:50:59.889Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcorowe.github.io/smds-pop/01c_assessment.html</loc>
+    <lastmod>2025-10-18T22:51:09.401Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcorowe.github.io/smds-pop/02a_spatial-data.html</loc>
+    <lastmod>2025-10-18T22:39:26.834Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcorowe.github.io/smds-pop/02b_geomanipulation.html</loc>
+    <lastmod>2025-10-18T22:40:19.167Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcorowe.github.io/smds-pop/02c_point-pattern.html</loc>
+    <lastmod>2025-10-18T22:40:46.808Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcorowe.github.io/smds-pop/02d_spatial-interaction.html</loc>
+    <lastmod>2025-10-18T22:41:15.858Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcorowe.github.io/smds-pop/02e_spatial-econometrics.html</loc>
+    <lastmod>2025-10-18T22:41:33.512Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcorowe.github.io/smds-pop/03a_data.html</loc>
+    <lastmod>2025-10-18T22:43:27.844Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcorowe.github.io/smds-pop/references.html</loc>
+    <lastmod>2025-10-18T22:03:47.901Z</lastmod>
+  </url>
+  <url>
+    <loc>https://fcorowe.github.io/smds-pop/Spatial-Data-Modelling.pdf</loc>
+    <lastmod>2025-10-18T22:57:44.060Z</lastmod>
   </url>
 </urlset>

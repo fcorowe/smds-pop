@@ -30,14 +30,22 @@ book:
   
   chapters:
     - index.qmd
-    - intro.qmd
-    # - spatial-data.qmd
-    # - geomanipulation.qmd
-    # - point-pattern.qmd
-    # - spatial-interaction.qmd
-    # - spatial-econometrics.qmd
-    - summary.qmd
-    - references.qmd
+    - part: "Introduction"
+      chapters: 
+        - 01a_overview.qmd
+        - 01b_environment.qmd
+        - 01c_assessment.qmd
+    - part: "Content"
+      chapters: 
+      - 02a_spatial-data.qmd
+      - 02b_geomanipulation.qmd
+      - 02c_point-pattern.qmd
+      - 02d_spatial-interaction.qmd
+      - 02e_spatial-econometrics.qmd
+    - part: "Supplement"
+      chapters: 
+      - 03a_data.qmd
+      - references.qmd
 
 bibliography: references.bib
 
