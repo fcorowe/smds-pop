@@ -1,0 +1,53 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Spatial Data Modelling"
+  subtitle: "Population Science"
+  author: 
+    - name: Francisco Rowe
+      orcid: 0000-0003-4137-0246
+      email: f.rowe-gonzalez@liverpool.ac.uk
+      url: https://www.franciscorowe.com
+      affiliations:
+      - name: University of Liverpool
+        city: Liverpool
+        country: United Kingdom
+  date: "today"
+  
+  page-footer:
+    left: |
+      Spatial Data Modelling was written by Francisco Rowe.
+    right: |
+      This book was built with <a href="https://quarto.org/">Quarto</a>.
+  cover-image: cover.png
+  favicon: cover.png
+  site-url: https://fcorowe.github.io/smds-pop/
+  repo-url: https://github.com/fcorowe/smds-pop
+  repo-branch: main
+  repo-actions: [edit, issue]
+  
+  chapters:
+    - index.qmd
+    - intro.qmd
+    # - spatial-data.qmd
+    # - geomanipulation.qmd
+    # - point-pattern.qmd
+    # - spatial-interaction.qmd
+    # - spatial-econometrics.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
