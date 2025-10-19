@@ -1,2 +1,1 @@
-# Spatial interaction modelling
-
+# Spatial interaction modelling {#sec-interaction}

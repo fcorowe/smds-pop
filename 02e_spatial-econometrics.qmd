@@ -1,2 +1,1 @@
-# Spatial econometrics
-
+# Spatial econometrics {#sec-econometrics}

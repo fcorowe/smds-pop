@@ -1,9 +1,9 @@
 # Welcome {.unnumbered}
 
-This is the website for the course: “Spatial Data Modelling for Population Science using R”. The course was designed and is delivered by Professor [Francisco Rowe](https://www.franciscorowe.com) from the Geographic Data Science Lab at the Department of Geography and Planning from the University of Liverpool, United Kingdom. 
+This is the website for the course: “Spatial Data Modelling for Population Science using R”. The course was designed and is delivered by Professor [Francisco Rowe](https://www.franciscorowe.com) from the Geographic Data Science Lab at the Department of Geography and Planning from the University of Liverpool, United Kingdom.
 
 ::: callout-note
-A PDF version of this course is available for download [here]().
+A PDF version of this course is available for download [here](https://github.com/fcorowe/smds-pop/blob/main/docs/Spatial-Data-Modelling.pdf).
 :::
 
 # Contact {.unnumbered}

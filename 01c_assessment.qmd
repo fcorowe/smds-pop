@@ -1,1 +1,114 @@
-# Assessment
+# Assessment {.unnumbered}
+
+The course assessment will consist of two components.
+
+## **Assignment 1: Spatial Data Infographic (40%)**
+
+**Description**\
+The first assignment involves the creation of an *infographic* that visually communicates a spatial data story. The goal is to synthesise spatial data, analytical results and visual design into a clear, evidence-based narrative that can fit within a single PowerPoint slide. The infographic must demonstrate understanding of spatial concepts, analytical methods and effective data communication principles.
+
+**Instructions**
+
+1.  **Topic** – Select a spatially explicit social, demographic or environmental issue (e.g., population change, internal migration, population decline, population ageing).
+
+2.  **Data** – Use the geospatial datasets on internal migration or population described in the Chapter dataset, or a comparable open dataset. Clearly cite all sources.
+
+3.  **Content** – Present a concise spatial narrative integrating:
+
+    -   A key research question or problem.
+
+    -   Relevant spatial analysis or modelling results (maps, graphs and / or summary statistics).
+
+    -   Interpretation of spatial patterns and implications.
+
+    -   References or data sources.
+
+4.  **Format** –
+
+    -   One PowerPoint slide (16:9 ratio).
+
+    -   All text must be legible when projected on screen.
+
+    -   Include a clear title and author name.
+
+    -   Visuals may include maps, charts, icons or minimal text boxes.
+
+    -   Use consistent colour-blind friendly palette and typographic hierarchy.
+
+5.  **Submission** – Upload the PowerPoint (.pptx) file and a PDF version.
+
+**Evaluation Criteria (100 points total)**
+
+| Criterion | Description | Weight |
+|----|----|----|
+| **Relevance and clarity of question** | Defines a meaningful spatial issue and communicates the core message clearly. | 20 % |
+| **Analytical rigor** | Demonstrates appropriate use of spatial data and analysis; accuracy of methods and results. | 25 % |
+| **Interpretation** | Interprets spatial patterns logically and links findings to broader demographic or social processes. | 20 % |
+| **Design and visual communication** | Effective visual hierarchy, readability, layout, and use of colour; slide visually balanced and professional. | 25 % |
+| **Data and source transparency** | Correct data citation and ethical use of sources. | 10 % |
+
+**Purpose**\
+This assignment develops skills in communicating spatial evidence succinctly and visually. This is an essential competence for academic, policy and professional audiences.
+
+## Assignment 2: Computational Essay (60%)
+
+**Description**\
+The second assignment consists of a *computational essay* that integrates narrative, code and visualisation to explore a spatially explicit research question. A computational essay is a document in which the *story, analysis and computation are woven together*: The text explains the logic of the analysis, the code performs it, and the figures or tables present the results. This format reflects the way spatial data scientists communicate reproducible, evidence-based insights.
+
+**Objectives**\
+The computational essay should:
+
+1.  Demonstrate the ability to apply spatial analysis or modelling techniques learned in the course.
+
+2.  Integrate theory, data and computation into a coherent narrative.
+
+3.  Present clear, reproducible and interpretable results using R.
+
+4.  Communicate findings effectively through maps, graphics and concise text.
+
+### **Instructions**
+
+1.  **Topic Selection**\
+    Choose a spatial problem relevant to the social, demographic, or environmental domains (e.g., population change, internal migration, population decline, population ageing). You may use the geospatial datasets on internal migration or population described in the Chapter dataset, or a comparable open dataset.
+
+2.  **Structure**
+
+    -   **Introduction (≈300–400 words):** State the research question and explain its spatial relevance.
+
+    -   **Data and Methods (≈400–600 words):** Describe the data sources, spatial structure and analytical or modelling techniques used. Include annotated R code chunks performing the analysis.
+
+    -   **Results and Discussion (≈600–800 words):** Present and interpret results using visualisations and tables. Discuss implications, limitations and potential extensions.
+
+    -   **Conclusion (≈200–300 words):** Summarise key findings and their significance.
+
+    -   **References (not included in the word count):** Include all data and bibliographic sources using a consistent citation style.
+
+3.  **Format and Submission**
+
+    -   Maximum **2,000 words** (excluding code, references and captions).
+
+    -   Include **R code** directly within the essay in Quarto format.
+
+    -   Include up to **five figures** (a figure may contain multiple maps or plots if they form a single integrated result).
+
+    -   Include up to **one table**.
+
+    -   Submit both the rendered **PDF or HTML output** and the corresponding **.qmd source file**. Ensure the active the option `self-contained` in the YALM of the .qmd file. This ensures all figures are embedded within the final HTML file.
+
+    -   All analyses must be fully reproducible using the submitted code and data. Share data via a link to the platform where they are stored such as Google Drive, Dropbox or GitHub.
+
+### **Evaluation Criteria (100 points total)**
+
+| Criterion | Description | Weight |
+|----|----|----|
+| **Relevance and research question** | Clearly defined, spatially meaningful question grounded in theory or application. | 15% |
+| **Analytical rigor and reproducibility** | Correct and appropriate use of spatial data and methods; code runs and reproduces results. | 25% |
+| **Integration of code and narrative** | Narrative, computation, and visuals are well-linked; code is readable and annotated. | 20% |
+| **Interpretation and critical insight** | Results are interpreted thoughtfully, demonstrating understanding of spatial processes. | 20% |
+| **Presentation and communication** | Clarity of writing, structure, figure quality, and adherence to limits. | 15% |
+| **Transparency and referencing** | Complete and accurate citation of data and literature sources. | 5% |
+
+------------------------------------------------------------------------
+
+**Purpose**\
+This assignment develops core competencies in *computational thinking*, *reproducible spatial analysis*, and *scientific communication*. It trains students to present spatial data analyses as coherent narratives supported by transparent, executable code. This is a skill essential for modern population and spatial data science.

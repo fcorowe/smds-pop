@@ -8,5 +8,82 @@
     "crumbs": [
       "Welcome"
     ]
+  },
+  {
+    "objectID": "01a_overview.html",
+    "href": "01a_overview.html",
+    "title": "Overview",
+    "section": "",
+    "text": "Aim\nThis course provides an introduction to Spatial Data Modelling for Population Science using R. It has been designed to be delivered in 15 hours of teaching, split into five sessions of 3 hours each, including breaks, practical examples and questions. This course provides an intuitive and practical explanation of methods, modelling frameworks and theories for analysing spatial data, as well as demographic and social processes represented in space. Spatial data have become ubiquitous. Data containing location have become increasingly common in both volume and frequency with the development and use of new sensor, satellite technilogy and GPS-based technologies, such as smartphones, social media platforms and contactless payment systems. At the same time, social and demographic processes occur within a geographic context that conditions or triggers their evolution. Therefore, these processes must be studied explicitly, considering the spatial context in which they take place. For these reasons, techniques that enable the analysis and modelling of spatial data are essential to understand demographic and social processes to inform policy and business decision-making.\nThe objective of the course is to expose students to a variety of techniques for the analysis and modelling of spatial data. The course discusses and illustrates the types of spatial data and the challenges they present, introducing a range of modelling and analytical approaches that explicitly account for space. It also aims to develop programming skills in the R language. These skills are important for several reasons: programming is in high demand, it teaches logical and methodical thinking, and it allows ideas to be materialised into tangible products such as maps. The course also aims to introduce generative artificial intelligence through the use of ChatGPT for code writing, debugging and reasoning.",
+    "crumbs": [
+      "Introduction",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "01a_overview.html#learning-outcomes",
+    "href": "01a_overview.html#learning-outcomes",
+    "title": "Overview",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\nBy the end of the module, students should be able to:\n\nidentify some key sources of spatial data and resources of spatial analysis and modelling tools;\n\nexplain the advantages of taking spatial structure into account when analysing spatial data;\n\napply a range of computer-based techniques for the analysis of spatial data, including mapping, correlation, kernel density estimation, spatial interaction modelling and spatial econometrics;\n\napply appropriate analytical strategies to tackle the key methodological challenges facing spatial analysis – spatial autocorrelation, heterogeneity, and ecological fallacy; and,\n\nselect appropriate analytical tools for analysing specific spatial data sets to address emerging social issues facing the society.",
+    "crumbs": [
+      "Introduction",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "01a_overview.html#teaching-approach",
+    "href": "01a_overview.html#teaching-approach",
+    "title": "Overview",
+    "section": "Teaching Approach",
+    "text": "Teaching Approach\nThe course combines lectures with a strong practical component and independent work. Each session will cover one of the following components:\n\nTypes of spatial data.\n\nManipulation and visualisation of spatial data.\n\nAnalysis of location data.\n\nAnalysis of spatial relationship data.\n\nModels that capture spatial correlation.\n\n\nThe course: - Introduces these techniques in an intuitive and applied manner rather than through theoretical mathematical or statistical derivations.\n\n\nFocuses on explaining when and why a technique is appropriate, followed by its application.\n\nUses several practical examples based on real data and research questions.\n\nIs built around the R programming language and uses structured computational notebooks compiled in a book, including code with explanations that can be reused with other datasets.",
+    "crumbs": [
+      "Introduction",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "01b_environment.html",
+    "href": "01b_environment.html",
+    "title": "Environment",
+    "section": "",
+    "text": "To reproduce the code in the book, you need the following software packages:\n\nR version 4.5.1 (2025-06-13)\n\nRStudio Version 2025.09.1+401 (2025.09.1+401)\nQuarto 1.8.25\nthe list of libraries in the next section\n\nTo check your version of:\n\nR and libraries run sessionInfo()\nRStudio click help on the menu bar and then About\nQuarto check the version file in the quarto folder on your computer.\n\nTo install and update:\n\nR, download the appropriate version from The Comprehensive R Archive Network (CRAN)\nRStudio, download the appropriate version from Posit\nQuarto, download the appropriate version from the Quarto website\n\n\nDependency list\nThe list of libraries used in this book is provided below:\n\narm\ncar\ncorrplot\ndevtools\nFRK\ngghighlight\nggplot2\nggmap\nGISTools\ngridExtra\ngstat\nhexbin\njtools\nkableExtra\nknitr\nlme4\nlmtest\nlubridate\nMASS\nmerTools\nplyr\nRColorBrewer\nrgdal\nsf\nsjPlot\nsp\nspgwr\nspatialreg\nspacetime\nstargazer\ntidyverse\ntmap\ntufte\nviridis\nbasemapR\n\nCopy, paste and run the code below in your console. Ensure all packages are installed on your computer.\n\n# package names\npackages &lt;- c(\n    \"arm\",\n    \"car\",\n    \"corrplot\",\n    \"devtools\",\n    \"FRK\",\n    \"gghighlight\",\n    \"ggplot2\",\n    \"ggmap\",\n    \"gridExtra\",\n    \"gstat\",\n    \"hexbin\",\n    \"jtools\",\n    \"kableExtra\",\n    \"knitr\",\n    \"lme4\",\n    \"lmtest\",\n    \"lubridate\",\n    \"MASS\",\n    \"merTools\",\n    \"plyr\",\n    \"RColorBrewer\",\n    \"sf\",\n    \"sjPlot\",\n    \"sp\",\n    \"spgwr\",\n    \"spatialreg\",\n    \"spacetime\",\n    \"stargazer\",\n    \"tidyverse\",\n    \"tmap\",\n    \"tufte\",\n    \"viridis\"\n)\n\n# install packages not yet installed\ninstalled_packages &lt;- packages %in% rownames(installed.packages())\nif (any(installed_packages == FALSE)) {\n  install.packages(packages[!installed_packages])\n}\n\n# packages loading\ninvisible(lapply(packages, library, character.only = TRUE))\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nTo install the library basemapR, you need to install from source by running:\nlibrary(devtools) install_github('Chrisjb/basemapR')",
+    "crumbs": [
+      "Introduction",
+      "Environment"
+    ]
+  },
+  {
+    "objectID": "01c_assessment.html",
+    "href": "01c_assessment.html",
+    "title": "Assessment",
+    "section": "",
+    "text": "Assignment 1: Spatial Data Infographic (40%)\nThe course assessment will consist of two components.\nDescription\nThe first assignment involves the creation of an infographic that visually communicates a spatial data story. The goal is to synthesise spatial data, analytical results and visual design into a clear, evidence-based narrative that can fit within a single PowerPoint slide. The infographic must demonstrate understanding of spatial concepts, analytical methods and effective data communication principles.\nInstructions\nEvaluation Criteria (100 points total)\nPurpose\nThis assignment develops skills in communicating spatial evidence succinctly and visually. This is an essential competence for academic, policy and professional audiences.",
+    "crumbs": [
+      "Introduction",
+      "Assessment"
+    ]
+  },
+  {
+    "objectID": "01c_assessment.html#assignment-1-spatial-data-infographic-40",
+    "href": "01c_assessment.html#assignment-1-spatial-data-infographic-40",
+    "title": "Assessment",
+    "section": "",
+    "text": "Topic – Select a spatially explicit social, demographic or environmental issue (e.g., population change, internal migration, population decline, population ageing).\nData – Use the geospatial datasets on internal migration or population described in the Chapter dataset, or a comparable open dataset. Clearly cite all sources.\nContent – Present a concise spatial narrative integrating:\n\nA key research question or problem.\nRelevant spatial analysis or modelling results (maps, graphs and / or summary statistics).\nInterpretation of spatial patterns and implications.\nReferences or data sources.\n\nFormat –\n\nOne PowerPoint slide (16:9 ratio).\nAll text must be legible when projected on screen.\nInclude a clear title and author name.\nVisuals may include maps, charts, icons or minimal text boxes.\nUse consistent colour-blind friendly palette and typographic hierarchy.\n\nSubmission – Upload the PowerPoint (.pptx) file and a PDF version.\n\n\n\n\n\n\n\n\n\n\nCriterion\nDescription\nWeight\n\n\n\n\nRelevance and clarity of question\nDefines a meaningful spatial issue and communicates the core message clearly.\n20 %\n\n\nAnalytical rigor\nDemonstrates appropriate use of spatial data and analysis; accuracy of methods and results.\n25 %\n\n\nInterpretation\nInterprets spatial patterns logically and links findings to broader demographic or social processes.\n20 %\n\n\nDesign and visual communication\nEffective visual hierarchy, readability, layout, and use of colour; slide visually balanced and professional.\n25 %\n\n\nData and source transparency\nCorrect data citation and ethical use of sources.\n10 %",
+    "crumbs": [
+      "Introduction",
+      "Assessment"
+    ]
+  },
+  {
+    "objectID": "01c_assessment.html#assignment-2-computational-essay-60",
+    "href": "01c_assessment.html#assignment-2-computational-essay-60",
+    "title": "Assessment",
+    "section": "Assignment 2: Computational Essay (60%)",
+    "text": "Assignment 2: Computational Essay (60%)\nDescription\nThe second assignment consists of a computational essay that integrates narrative, code and visualisation to explore a spatially explicit research question. A computational essay is a document in which the story, analysis and computation are woven together: The text explains the logic of the analysis, the code performs it, and the figures or tables present the results. This format reflects the way spatial data scientists communicate reproducible, evidence-based insights.\nObjectives\nThe computational essay should:\n\nDemonstrate the ability to apply spatial analysis or modelling techniques learned in the course.\nIntegrate theory, data and computation into a coherent narrative.\nPresent clear, reproducible and interpretable results using R.\nCommunicate findings effectively through maps, graphics and concise text.\n\n\nInstructions\n\nTopic Selection\nChoose a spatial problem relevant to the social, demographic, or environmental domains (e.g., population change, internal migration, population decline, population ageing). You may use the geospatial datasets on internal migration or population described in the Chapter dataset, or a comparable open dataset.\nStructure\n\nIntroduction (≈300–400 words): State the research question and explain its spatial relevance.\nData and Methods (≈400–600 words): Describe the data sources, spatial structure and analytical or modelling techniques used. Include annotated R code chunks performing the analysis.\nResults and Discussion (≈600–800 words): Present and interpret results using visualisations and tables. Discuss implications, limitations and potential extensions.\nConclusion (≈200–300 words): Summarise key findings and their significance.\nReferences (not included in the word count): Include all data and bibliographic sources using a consistent citation style.\n\nFormat and Submission\n\nMaximum 2,000 words (excluding code, references and captions).\nInclude R code directly within the essay in Quarto format.\nInclude up to five figures (a figure may contain multiple maps or plots if they form a single integrated result).\nInclude up to one table.\nSubmit both the rendered PDF or HTML output and the corresponding .qmd source file. Ensure the active the option self-contained in the YALM of the .qmd file. This ensures all figures are embedded within the final HTML file.\nAll analyses must be fully reproducible using the submitted code and data. Share data via a link to the platform where they are stored such as Google Drive, Dropbox or GitHub.\n\n\n\n\nEvaluation Criteria (100 points total)\n\n\n\n\n\n\n\n\nCriterion\nDescription\nWeight\n\n\n\n\nRelevance and research question\nClearly defined, spatially meaningful question grounded in theory or application.\n15%\n\n\nAnalytical rigor and reproducibility\nCorrect and appropriate use of spatial data and methods; code runs and reproduces results.\n25%\n\n\nIntegration of code and narrative\nNarrative, computation, and visuals are well-linked; code is readable and annotated.\n20%\n\n\nInterpretation and critical insight\nResults are interpreted thoughtfully, demonstrating understanding of spatial processes.\n20%\n\n\nPresentation and communication\nClarity of writing, structure, figure quality, and adherence to limits.\n15%\n\n\nTransparency and referencing\nComplete and accurate citation of data and literature sources.\n5%\n\n\n\n\nPurpose\nThis assignment develops core competencies in computational thinking, reproducible spatial analysis, and scientific communication. It trains students to present spatial data analyses as coherent narratives supported by transparent, executable code. This is a skill essential for modern population and spatial data science.",
+    "crumbs": [
+      "Introduction",
+      "Assessment"
+    ]
   }
 ]

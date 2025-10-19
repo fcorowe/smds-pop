@@ -1,1 +1,119 @@
-# Environment
+# Environment {.unnumbered}
+
+To reproduce the code in the book, you need the following software packages:
+
+-   R version 4.5.1 (2025-06-13) \
+-   RStudio Version 2025.09.1+401 (2025.09.1+401)
+-   Quarto 1.8.25
+-   the list of libraries in the next section
+
+To check your version of:
+
+-   R and libraries run `sessionInfo()`
+-   RStudio click `help` on the menu bar and then `About`
+-   Quarto check the `version` file in the quarto folder on your computer.
+
+To install and update:
+
+-   R, download the appropriate version from [The Comprehensive R Archive Network (CRAN)](https://cran.r-project.org)
+-   RStudio, download the appropriate version from [Posit](https://posit.co/download/rstudio-desktop/)
+-   Quarto, download the appropriate version from [the Quarto website](https://quarto.org/docs/get-started/)
+
+### Dependency list {#sec-dependencies}
+
+The list of libraries used in this book is provided below:
+
+-   `arm`
+-   `car`
+-   `corrplot`
+-   `devtools`
+-   `FRK`
+-   `gghighlight`
+-   `ggplot2`
+-   `ggmap`
+-   `GISTools`
+-   `gridExtra`
+-   `gstat`
+-   `hexbin`
+-   `jtools`
+-   `kableExtra`
+-   `knitr`
+-   `lme4`
+-   `lmtest`
+-   `lubridate`
+-   `MASS`
+-   `merTools`
+-   `plyr`
+-   `RColorBrewer`
+-   `rgdal`
+-   `sf`
+-   `sjPlot`
+-   `sp`
+-   `spgwr`
+-   `spatialreg`
+-   `spacetime`
+-   `stargazer`
+-   `tidyverse`
+-   `tmap`
+-   `tufte`
+-   `viridis`
+-   `basemapR`
+
+Copy, paste and run the code below in your console. Ensure all packages are installed on your computer.
+
+```{r}
+#| eval: false
+
+# package names
+packages <- c(
+    "arm",
+    "car",
+    "corrplot",
+    "devtools",
+    "FRK",
+    "gghighlight",
+    "ggplot2",
+    "ggmap",
+    "gridExtra",
+    "gstat",
+    "hexbin",
+    "jtools",
+    "kableExtra",
+    "knitr",
+    "lme4",
+    "lmtest",
+    "lubridate",
+    "MASS",
+    "merTools",
+    "plyr",
+    "RColorBrewer",
+    "sf",
+    "sjPlot",
+    "sp",
+    "spgwr",
+    "spatialreg",
+    "spacetime",
+    "stargazer",
+    "tidyverse",
+    "tmap",
+    "tufte",
+    "viridis"
+)
+
+# install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+# packages loading
+invisible(lapply(packages, library, character.only = TRUE))
+```
+
+:::: column-margin
+::: callout-note
+To install the library `basemapR`, you need to install from source by running:
+
+`library(devtools)` `install_github('Chrisjb/basemapR')`
+:::
+::::
