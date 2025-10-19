@@ -20,7 +20,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -75,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -218,11 +273,21 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#dependencies" id="toc-dependencies" class="nav-link active" data-scroll-target="#dependencies"><span class="header-section-number">2.1</span> Dependencies</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">2.2</span> Data</a>
+  <ul class="collapse">
+  <li><a href="#meta-facebook-mobility-data" id="toc-meta-facebook-mobility-data" class="nav-link" data-scroll-target="#meta-facebook-mobility-data"><span class="header-section-number">2.2.1</span> Meta-Facebook mobility data</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/fcorowe/smds-pop/edit/main/02b_geomanipulation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/fcorowe/smds-pop/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02a_spatial-data.html">Content</a></li><li class="breadcrumb-item"><a href="./02b_geomanipulation.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Spatial data manipulation and visualisation</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -243,8 +308,111 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>This Chapter aims to demonstrate how we can manipulate, wrangle and visualise spatial data in R.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Create the habit of running the code below at the start of each R session. It will ensure you do not have leftovers from previous sessions, potentially leading to mistakes.</p>
+<p><code>#clean environment</code> <code>rm(list=ls())</code></p>
+</div>
+</div>
+</div></div><section id="dependencies" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="dependencies"><span class="header-section-number">2.1</span> Dependencies</h2>
+<p>We ensure to load the libraries below. A core area of this session is learning to work with spatial data in R. R offers an ecosystem of purposely designed packages for manipulation and visualisation of spatial data and spatial analysis techniques. These ecosystem is known a <a href="https://r-spatial.org">r-spatial</a>. Various packages exist in <a href="https://cran.r-project.org">CRAN (The Comprehensive R Archive Network)</a>, including <strong>sf</strong> <span class="citation" data-cites="sf2018 R-sf">(<a href="references.html#ref-sf2018" role="doc-biblioref">E. Pebesma 2018</a>, <a href="references.html#ref-R-sf" role="doc-biblioref">2022a</a>)</span>, <strong>stars</strong> <span class="citation" data-cites="R-stars">(<a href="references.html#ref-R-stars" role="doc-biblioref">E. Pebesma 2022b</a>)</span>, <strong>terra</strong>, <strong>s2</strong> <span class="citation" data-cites="R-s2">(<a href="references.html#ref-R-s2" role="doc-biblioref">Dunnington, Pebesma, and Rubak 2023</a>)</span>, <strong>lwgeom</strong> <span class="citation" data-cites="R-lwgeom">(<a href="references.html#ref-R-lwgeom" role="doc-biblioref">E. Pebesma 2023</a>)</span>, <strong>gstat</strong> <span class="citation" data-cites="pebesma2004 R-gstat">(<a href="references.html#ref-pebesma2004" role="doc-biblioref">E. J. Pebesma 2004</a>; <a href="references.html#ref-R-gstat" role="doc-biblioref">E. Pebesma and Graeler 2022</a>)</span>, <strong>spdep</strong> <span class="citation" data-cites="R-spdep">(<a href="references.html#ref-R-spdep" role="doc-biblioref">Bivand 2022</a>)</span>, <strong>spatialreg</strong> <span class="citation" data-cites="R-spatialreg">(<a href="references.html#ref-R-spatialreg" role="doc-biblioref">Bivand and Piras 2022</a>)</span>, <strong>spatstat</strong> <span class="citation" data-cites="baddeley2015spatial R-spatstat">(<a href="references.html#ref-baddeley2015spatial" role="doc-biblioref">Baddeley, Rubak, and Turner 2015</a>; <a href="references.html#ref-R-spatstat" role="doc-biblioref">Baddeley, Turner, and Rubak 2022</a>)</span>, <strong>tmap</strong> <span class="citation" data-cites="tmap2018 R-tmap">(<a href="references.html#ref-tmap2018" role="doc-biblioref">Tennekes 2018</a>, <a href="references.html#ref-R-tmap" role="doc-biblioref">2022</a>)</span>, <strong>mapview</strong> <span class="citation" data-cites="R-mapview">(<a href="references.html#ref-R-mapview" role="doc-biblioref">Appelhans et al. 2022</a>)</span> and more. A key package is this ecosystem is <strong>sf</strong> <span class="citation" data-cites="pebesma2023spatial">(<a href="references.html#ref-pebesma2023spatial" role="doc-biblioref">E. Pebesma and Bivand 2023</a>)</span>. R package <strong>sf</strong> provides a table format for simple features, where feature geometries are stored in a list-column. It appears in 2016 and was developed to move spatial data analysis in R closer to standards-based approaches seen in the industry and open source projects, to build upon more modern versions of open source geospatial software stack and allow for integration of R spatial software with the <strong>tidyverse</strong> <span class="citation" data-cites="tidyverse2019">(<a href="references.html#ref-tidyverse2019" role="doc-biblioref">Wickham et al. 2019</a>)</span>, particularly <strong>ggplot2</strong>, <strong>dplyr</strong>, and <strong>tidyr</strong>. In this course, we will heavily use <code>sf</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data wrangling</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># spatial data wrangling</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp) </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># data visualisation</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis) </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer) </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># format data visualisations</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(showtext)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># create maps</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapdeck)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="data" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="data"><span class="header-section-number">2.2</span> Data</h2>
+<p>Here we read all the data needed for the analysis. We use two types of data: (1) human mobility derived from Meta-Facebook users; and, (2) administrative boundary data for Chile.</p>
+<section id="meta-facebook-mobility-data" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="meta-facebook-mobility-data"><span class="header-section-number">2.2.1</span> Meta-Facebook mobility data</h3>
+<p>We use origin-destination mobility flow data between Provinces in Chile. We use data for April 2020. For a detailed description of the Meta-Facebook mobility data, please see the introductory session for the followwing workshop <a href="https://fcorowe.github.io/dfd4mobility/data-description.html"><em>“Using Digital Footprint Data to Measure and Monitor Human Mobility”</em></a>. We start by reading the data. We filter only flows occurring within the boundaries of Chile. The dataset contains daily flow counts between provinces that occurred in April 2020 during three windows of time during the day; that is, between 12am, 8am and 4pm.</p>
+<p>We have a look at the data frame. We can see that the data contains 20 columns and 29,491 origin-destination interactions capturing counts of movements between provinces.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-R-mapview" class="csl-entry" role="listitem">
+Appelhans, Tim, Florian Detsch, Christoph Reudenbach, and Stefan Woellauer. 2022. <em>Mapview: Interactive Viewing of Spatial Data in r</em>. <a href="https://github.com/r-spatial/mapview">https://github.com/r-spatial/mapview</a>.
+</div>
+<div id="ref-baddeley2015spatial" class="csl-entry" role="listitem">
+Baddeley, Adrian, Ege Rubak, and Rolf Turner. 2015. <em>Spatial Point Patterns: Methodology and Applications with r</em>. CRC press.
+</div>
+<div id="ref-R-spatstat" class="csl-entry" role="listitem">
+Baddeley, Adrian, Rolf Turner, and Ege Rubak. 2022. <em>Spatstat: Spatial Point Pattern Analysis, Model-Fitting, Simulation, Tests</em>. <a href="http://spatstat.org/">http://spatstat.org/</a>.
+</div>
+<div id="ref-R-spdep" class="csl-entry" role="listitem">
+Bivand, Roger. 2022. <em>Spdep: Spatial Dependence: Weighting Schemes, Statistics</em>.
+</div>
+<div id="ref-R-spatialreg" class="csl-entry" role="listitem">
+Bivand, Roger, and Gianfranco Piras. 2022. <em>Spatialreg: Spatial Regression Analysis</em>. <a href="https://CRAN.R-project.org/package=spatialreg">https://CRAN.R-project.org/package=spatialreg</a>.
+</div>
+<div id="ref-R-s2" class="csl-entry" role="listitem">
+Dunnington, Dewey, Edzer Pebesma, and Ege Rubak. 2023. <em>S2: Spherical Geometry Operators Using the S2 Geometry Library</em>. <a href="https://CRAN.R-project.org/package=s2">https://CRAN.R-project.org/package=s2</a>.
+</div>
+<div id="ref-sf2018" class="csl-entry" role="listitem">
+Pebesma, Edzer. 2018. <span>“<span class="nocase">Simple Features for R: Standardized Support for Spatial Vector Data</span>.”</span> <em><span>The R Journal</span></em> 10 (1): 439–46. <a href="https://doi.org/10.32614/RJ-2018-009">https://doi.org/10.32614/RJ-2018-009</a>.
+</div>
+<div id="ref-R-sf" class="csl-entry" role="listitem">
+———. 2022a. <em>Sf: Simple Features for r</em>. <a href="https://CRAN.R-project.org/package=sf">https://CRAN.R-project.org/package=sf</a>.
+</div>
+<div id="ref-R-stars" class="csl-entry" role="listitem">
+———. 2022b. <em>Stars: Spatiotemporal Arrays, Raster and Vector Data Cubes</em>. <a href="https://CRAN.R-project.org/package=stars">https://CRAN.R-project.org/package=stars</a>.
+</div>
+<div id="ref-R-lwgeom" class="csl-entry" role="listitem">
+———. 2023. <em>Lwgeom: Bindings to Selected Liblwgeom Functions for Simple Features</em>. <a href="https://github.com/r-spatial/lwgeom/">https://github.com/r-spatial/lwgeom/</a>.
+</div>
+<div id="ref-pebesma2004" class="csl-entry" role="listitem">
+Pebesma, Edzer J. 2004. <span>“Multivariable Geostatistics in S: The Gstat Package.”</span> <em>Computers &amp; Geosciences</em> 30 (7): 683–91. <a href="https://doi.org/10.1016/j.cageo.2004.03.012">https://doi.org/10.1016/j.cageo.2004.03.012</a>.
+</div>
+<div id="ref-pebesma2023spatial" class="csl-entry" role="listitem">
+Pebesma, Edzer, and Roger Bivand. 2023. <em>Spatial Data Science: With Applications in r</em>. CRC Press.
+</div>
+<div id="ref-R-gstat" class="csl-entry" role="listitem">
+Pebesma, Edzer, and Benedikt Graeler. 2022. <em>Gstat: Spatial and Spatio-Temporal Geostatistical Modelling, Prediction and Simulation</em>. <a href="https://github.com/r-spatial/gstat/">https://github.com/r-spatial/gstat/</a>.
+</div>
+<div id="ref-tmap2018" class="csl-entry" role="listitem">
+Tennekes, Martijn. 2018. <span>“<span class="nocase">tmap</span>: Thematic Maps in <span>R</span>.”</span> <em>Journal of Statistical Software</em> 84 (6): 1–39. <a href="https://doi.org/10.18637/jss.v084.i06">https://doi.org/10.18637/jss.v084.i06</a>.
+</div>
+<div id="ref-R-tmap" class="csl-entry" role="listitem">
+———. 2022. <em>Tmap: Thematic Maps</em>. <a href="https://github.com/r-tmap/tmap">https://github.com/r-tmap/tmap</a>.
+</div>
+<div id="ref-tidyverse2019" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+</div>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -667,7 +835,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/fcorowe/smds-pop/edit/main/02b_geomanipulation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/fcorowe/smds-pop/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/fcorowe/smds-pop/edit/main/02b_geomanipulation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/fcorowe/smds-pop/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

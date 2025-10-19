@@ -1,2 +1,55 @@
 # Spatial data manipulation and visualisation
 
+
+This Chapter aims to demonstrate how we can manipulate, wrangle and visualise spatial data in R. 
+
+:::: column-margin
+::: callout-note
+Create the habit of running the code below at the start of each R session. It will ensure you do not have leftovers from previous sessions, potentially leading to mistakes.
+
+`#clean environment`
+`rm(list=ls())`
+:::
+::::
+
+## Dependencies
+
+We ensure to load the libraries below. A core area of this session is learning to work with spatial data in R. R offers an ecosystem of purposely designed packages for manipulation and visualisation of spatial data and spatial analysis techniques. These ecosystem is known a [r-spatial](https://r-spatial.org). Various packages exist in [CRAN (The Comprehensive R Archive Network)](https://cran.r-project.org), including **sf** [@sf2018; @R-sf], **stars** [@R-stars], **terra**, **s2** [@R-s2], **lwgeom** [@R-lwgeom], **gstat** [@pebesma2004; @R-gstat], **spdep** [@R-spdep], **spatialreg** [@R-spatialreg], **spatstat** [@baddeley2015spatial; @R-spatstat], **tmap** [@tmap2018; @R-tmap], **mapview** [@R-mapview] and more. A key package is this ecosystem is **sf** [@pebesma2023spatial]. R package **sf** provides a table format for simple features, where feature geometries are stored in a list-column. It appears in 2016 and was developed to move spatial data analysis in R closer to standards-based approaches seen in the industry and open source projects, to build upon more modern versions of open source geospatial software stack and allow for integration of R spatial software with the **tidyverse** [@tidyverse2019], particularly **ggplot2**, **dplyr**, and **tidyr**. In this course, we will heavily use `sf`.
+
+```{r}
+#| warning: false
+#| message: false
+
+# data wrangling
+library(tidyverse)
+
+# spatial data wrangling
+library(sf)
+library(sp) 
+
+# data visualisation
+library(viridis) 
+library(RColorBrewer) 
+
+# format data visualisations
+library(ggthemes)
+library(patchwork)
+library(showtext)
+library(scales)
+
+# create maps
+library(leaflet)
+library(tmap)
+library(mapdeck)
+```
+
+## Data
+
+Here we read all the data needed for the analysis. We use two types of data: (1) human mobility derived from Meta-Facebook users; and, (2) administrative boundary data for Chile.
+
+### Meta-Facebook mobility data
+
+We use origin-destination mobility flow data between Provinces in Chile. We use data for April 2020. For a detailed description of the Meta-Facebook mobility data, please see the introductory session for the followwing workshop [*"Using Digital Footprint Data to Measure and Monitor Human Mobility"*](https://fcorowe.github.io/dfd4mobility/data-description.html). We start by reading the data. We filter only flows occurring within the boundaries of Chile. The dataset contains daily flow counts between provinces that occurred in April 2020 during three windows of time during the day; that is, between 12am, 8am and 4pm.
+
+We have a look at the data frame. We can see that the data contains 20 columns and 29,491 origin-destination interactions capturing counts of movements between provinces.
+

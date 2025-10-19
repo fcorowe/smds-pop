@@ -2,7 +2,7 @@
 
 To reproduce the code in the book, you need the following software packages:
 
--   R version 4.5.1 (2025-06-13) \
+-   R version 4.5.1 (2025-06-13)\
 -   RStudio Version 2025.09.1+401 (2025.09.1+401)
 -   Quarto 1.8.25
 -   the list of libraries in the next section
@@ -34,22 +34,28 @@ The list of libraries used in this book is provided below:
 -   `GISTools`
 -   `gridExtra`
 -   `gstat`
+-   `ggthemes`
 -   `hexbin`
 -   `jtools`
 -   `kableExtra`
 -   `knitr`
+-   `leaflet`
 -   `lme4`
 -   `lmtest`
 -   `lubridate`
+-   `mapdeck`
 -   `MASS`
 -   `merTools`
 -   `plyr`
+-   `patchwork`
 -   `RColorBrewer`
 -   `rgdal`
+-   `scales`
 -   `sf`
 -   `sjPlot`
 -   `sp`
 -   `spgwr`
+-   `showtext`
 -   `spatialreg`
 -   `spacetime`
 -   `stargazer`
