@@ -45,11 +45,76 @@ library(mapdeck)
 
 ## Data
 
-Here we read all the data needed for the analysis. We use two types of data: (1) human mobility derived from Meta-Facebook users; and, (2) administrative boundary data for Chile.
+Here we read all the data needed for the analysis. We use two types of data: (1) human mobility and population derived from Meta-Facebook users; and, (2) administative boundary data for Chile.
 
 ### Meta-Facebook mobility data
 
-We use origin-destination mobility flow data between Provinces in Chile. We use data for April 2020. For a detailed description of the Meta-Facebook mobility data, please see the introductory session for the followwing workshop [*"Using Digital Footprint Data to Measure and Monitor Human Mobility"*](https://fcorowe.github.io/dfd4mobility/data-description.html). We start by reading the data. We filter only flows occurring within the boundaries of Chile. The dataset contains daily flow counts between provinces that occurred in April 2020 during three windows of time during the day; that is, between 12am, 8am and 4pm.
+We use origin-destination mobility flow data between Provinces in Chile. We use data for April 2020. For a detailed description of the Meta-Facebook mobility data, please see the Chapter [Datasets](). We start by reading the data. We filter only flows occurring within the boundaries of Chile. The dataset contains daily flow counts between provinces that occurred in April 2020 during three windows of time during the day; that is, between 12am, 8am and 4pm.
 
 We have a look at the data frame. We can see that the data contains 20 columns and 29,491 origin-destination interactions capturing counts of movements between provinces.
+
+```{r}
+# read
+df20 <- readRDS("./data/fb/movement_adm/2020_04.rds") %>% 
+  dplyr::filter(country == "CL")
+glimpse(df20)
+```
+
+We can identify the list of origin and destination provinces for which we can observe movement.
+
+```{r}
+unique_origins <- unique(df20$start_polygon_name)
+unique_destinations <- unique(df20$end_polygon_name)
+```
+
+### Meta-Facebook active users population
+
+We will also use information on the number of Meta-Facebook active users population. The population Meta-Facebook active users can vary over time reflecting their varying patterns of usage and internet accessibility.
+
+```{r}
+# read and select observations
+pop20_df <- readRDS("./data/fb/population_adm/2020_04.rds") %>% 
+  dplyr::filter(country == "CL")
+
+# identify polygons
+unique_areas <- unique(pop20_df$polygon_name)
+
+# data overview
+glimpse(pop20_df)
+```
+### Administrative areas
+
+We now read the boundaries for Chilean provinces. Provinces are the second administrative level in the country. Provinces are amalgamations of municipalities or comunes, and groupings of provinces are known as regions. Chile is organised around 15 regions, *54 provinces* and 346 municipalities - see [here](https://www.subdere.gov.cl/sites/default/files/documentos/articles-73111_recurso_1.pdf).
+
+Let's stop here and understand the spatial data frame or **sf** object we are reading. We can see it has 56 features (i.e. rows) and 5 fields (columns) within a bounding box which defines the area we can visualise on a map. You can see how the map of provinces below seems off to the right. That is because the bounding box has been set to include Chilean islands off of the coast of the country on the Pacific ocean. We will work on adjusting this at a later point in this session.
+
+The line *CRS* or Coordinate Reference Systems identifies the projection system currently attached to the data. This would be the CRS that will be used if we decided to map the data. The component is incredible important if you intend to combine information from two spatial data frames. Ensure they are on the same CRS! A good idea is to used planar projection systems. @lovelace2019geocomputation provide a good discussion on the various projection systems.
+
+```{r}
+#| warning: false
+shp_pro <- read_sf("./data/shp/adm/province/PROVINCIAS_2020.shp") %>% 
+  st_simplify(preserveTopology =T,
+              dTolerance = 1000) %>%  # 1km
+  sf::st_make_valid() 
+shp_pro
+```
+
+```{r}
+#| echo: false
+ggplot(data = shp_pro) + 
+  geom_sf(color = "gray60", 
+          size = 0.1) +
+  theme_void() +
+  ggtitle('Provinces')
+```
+
+We will also use the regional boundaries for visualisation purposes. For now, we will just read them.
+
+```{r}
+#| warning: false
+shp_reg <- read_sf("./data/shp/adm/region/REGIONES_2020.shp") %>% 
+  st_simplify(preserveTopology =T,
+              dTolerance = 1000) %>%  # 1km
+  sf::st_make_valid() 
+```
 
