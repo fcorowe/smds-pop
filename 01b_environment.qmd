@@ -120,6 +120,8 @@ invisible(lapply(packages, library, character.only = TRUE))
 ::: callout-note
 To install the library `basemapR`, you need to install from source by running:
 
-`library(devtools)` `install_github('Chrisjb/basemapR')`
+`library(devtools)` 
+
+`install_github('Chrisjb/basemapR')`
 :::
 ::::
